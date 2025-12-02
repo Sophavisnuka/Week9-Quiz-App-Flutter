@@ -15,14 +15,16 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-        icon: Icon(icon),
-        label: Text(label),
-        onPressed: onTap,
-        style: OutlinedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(
-            vertical: 10,
-            horizontal: 40,
-          ),
-        ));
+      icon: Icon(icon),
+      label: Text(label),
+      onPressed: onTap,
+      style: OutlinedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(
+          vertical: 20,
+          horizontal: 50,
+        ),
+        foregroundColor: Colors.black
+      ),
+    );
   }
 }
