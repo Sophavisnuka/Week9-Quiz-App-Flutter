@@ -1,11 +1,12 @@
+import 'question.dart';
+
+// Quiz model
 class Quiz {
-  final String question;
-  final List<String> answers;  
-  final String correctAnswer; 
+  final String title;
+  final List<Question> questions;
 
   Quiz({
-    required this.question,
-    required this.answers,
-    required this.correctAnswer
+    required this.title,
+    required this.questions,
   });
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:quizapp/ui/screens/question_screen.dart';
 import 'package:quizapp/ui/screens/result_screen.dart';
 import 'package:quizapp/ui/screens/welcome_screen.dart';
+import '../model/question.dart';
+
 
 enum Screen {
   welcome,
@@ -18,6 +20,7 @@ class _QuizAppState extends State<QuizApp> {
 
   Screen currentState = Screen.welcome;
   int finalScore = 0;
+  List<Question> completedQuestions = [];
 
   void start() {
     setState(() {
@@ -29,10 +32,11 @@ class _QuizAppState extends State<QuizApp> {
       currentState = Screen.quiz;
     });
   }
-  void result(int score) {
+  void result(int score, List<Question> questions) {
     setState(() {
       finalScore = score;
       currentState = Screen.result;
+      completedQuestions = questions;
     });
   }
   
@@ -48,7 +52,8 @@ class _QuizAppState extends State<QuizApp> {
     } else {
       quizScreen = ResultScreen(
         score: finalScore,
-        onRestart: start
+        onRestart: start,
+        questions: completedQuestions,
       );
     }
 

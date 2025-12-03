@@ -23,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
             width: 250,
           ),
           SizedBox(height: 30),
-          AppButton(icon: Icons.start, 'Start', onTap: startQuiz),
+          AppButton('Start', icon: Icons.play_arrow, onTap: startQuiz),
         ],
       ),
     );
