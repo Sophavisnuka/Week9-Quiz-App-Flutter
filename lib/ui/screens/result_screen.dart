@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/ui/widgets/app_button.dart';
 import '../../model/answer.dart';
 import '../../model/question.dart';
 
 class ResultScreen extends StatelessWidget {
-  final int score;
+  final int totalScore;
   final List<Question> questions;
   final VoidCallback onRestart;
 
   const ResultScreen({
     super.key,
-    required this.score,
+    required this.totalScore,
     required this.questions,
     required this.onRestart,
   });
@@ -37,7 +38,7 @@ class ResultScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                "You answered $score on ${questions.length}!",
+                "You answered $totalScore on ${questions.length}!",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -68,20 +69,13 @@ class ResultScreen extends StatelessWidget {
                                 radius: 16,
                                 backgroundColor: isCorrect ? Colors.green : Colors.red,
                                 child: Text(
-                                  "${index + 1}",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 16),
+                                  "${index + 1}", style: TextStyle(color: Colors.white, fontSize: 16)
                                 ),
                               ),
                               SizedBox(width: 12),
                               Expanded(
                                 child: Text(
-                                  q.questionText,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
+                                  q.questionText, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)
                                 ),
                               ),
                             ],
@@ -94,14 +88,9 @@ class ResultScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: q.answers.map((answer) {
                                 return Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(vertical: 3),
+                                  padding: EdgeInsets.symmetric(vertical: 3),
                                   child: Text(
-                                    answer.answerText,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: getAnswerColor(q, answer),
-                                    ),
+                                    answer.answerText, style: TextStyle(fontSize: 16, color: getAnswerColor(q, answer))
                                   ),
                                 );
                               }).toList(),
@@ -116,23 +105,7 @@ class ResultScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              // Restart Button
-              Center(
-                child: ElevatedButton(
-                  onPressed: onRestart,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 45, vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  child: Text("Restart Quiz"),
-                ),
-              ),
-
+              AppButton('Restart Quiz', onTap: onRestart),
               SizedBox(height: 20),
             ],
           ),

@@ -20,7 +20,7 @@ class _QuizAppState extends State<QuizApp> {
 
   Screen currentState = Screen.welcome;
   int finalScore = 0;
-  List<Question> completedQuestions = [];
+  List<Question> totalQuestions = [];
 
   void start() {
     setState(() {
@@ -36,7 +36,7 @@ class _QuizAppState extends State<QuizApp> {
     setState(() {
       finalScore = score;
       currentState = Screen.result;
-      completedQuestions = questions;
+      totalQuestions = questions;
     });
   }
   
@@ -51,9 +51,9 @@ class _QuizAppState extends State<QuizApp> {
       quizScreen = QuestionScreen(onQuizCompleted: result);
     } else {
       quizScreen = ResultScreen(
-        score: finalScore,
+        totalScore: finalScore,
         onRestart: start,
-        questions: completedQuestions,
+        questions: totalQuestions,
       );
     }
 
