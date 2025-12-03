@@ -13,6 +13,11 @@ class QuizMockRepository {
         answers: ["Java", "Dart", "Python"],
         correctAnswer: "Dart",
       ),
+      Quiz(
+        question: "Who is the real fem boy?",
+        answers: ["Vicheka", "Ah vich", "Ah kmav"],
+        correctAnswer: "Ah kmav",
+      ),
     ];
   }
 }

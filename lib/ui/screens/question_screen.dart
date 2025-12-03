@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/ui/widgets/answer_card.dart';
-// import 'package:quizapp/ui/widgets/navigate_button.dart';
 import '../../data/repositories/quiz_mock_repositories.dart';
 import '../../model/quiz.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key});
+
+  final void Function(int score) onQuizCompleted;
+  const QuestionScreen({
+    super.key,
+    required this.onQuizCompleted
+  });
 
   @override
   State<QuestionScreen> createState() => _QuestionScreenState();
@@ -25,14 +29,13 @@ class _QuestionScreenState extends  State<QuestionScreen> {
         currentIndex ++;
       });
     } else {
-      print('final score: $score');
+      widget.onQuizCompleted(score);
     }
   }
 
   @override
   Widget build(BuildContext context) {
 
-    // questions = QuizMockRepository().getQuestions();
     final currentQuestion = questions[currentIndex];
 
     return SafeArea(
